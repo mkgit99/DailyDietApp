@@ -2,7 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { SampleDialogComponent } from './sample-dialog/sample-dialog.component';
+import { FoodDialogComponent } from './food-dialog/food-dialog.component';
 
 
 @Component({
@@ -20,6 +20,10 @@ export class AppComponent implements OnInit {
   constructor(private dialog: MatDialog, private overlay: OverlayContainer) { }
 
   ngOnInit(): void {
+    this.toggleDarkMode();
+  }
+
+  toggleDarkMode(): void {
     this.toggleControl.valueChanges.subscribe((darkMode) => {
       const darkClassName = 'darkMode';
       this.className = darkMode ? darkClassName : '';
@@ -31,10 +35,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  showDialog(): void {
-    this.dialog.open(SampleDialogComponent,
+  openFoodDialog(): void {
+    this.dialog.open(FoodDialogComponent,
       {
-        width: '500px'
+        width: '30%',
+        minWidth: '400px'
       });
   }
 }

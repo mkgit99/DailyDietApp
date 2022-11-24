@@ -16,14 +16,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { SampleDialogComponent } from './sample-dialog/sample-dialog.component';
+import { FoodDialogComponent } from './food-dialog/food-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SampleDialogComponent
+    FoodDialogComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,9 @@ import { SampleDialogComponent } from './sample-dialog/sample-dialog.component';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

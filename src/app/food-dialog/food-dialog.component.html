@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>Add new food</h1>
+<div mat-dialog-content>
+	<mat-form-field appearance="outline">
+		<mat-label>Name</mat-label>
+		<input matInput placeholder="Ex. Banana">
+	</mat-form-field>
+	<mat-form-field appearance="outline">
+		<mat-label>Brand</mat-label>
+		<input matInput placeholder="Ex. Adidas">
+	</mat-form-field>
+	<mat-form-field appearance="outline">
+		<mat-label>Food Category</mat-label>
+		<mat-select [(ngModel)]="selectedCategory" name="category">
+			<mat-option *ngFor="let category of foodCategories" [value]="category.value">
+				{{category.value}}
+			</mat-option>
+		</mat-select>
+		<!-- <mat-error *ngIf="categoryControl.hasError('required')">Please choose category</mat-error> -->
+	</mat-form-field>
+	<h3 mat-dialog-title>Nutrition facts per <b>100g</b> :</h3>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label>Calories</mat-label>
+		<input class="number-input" matInput type="number">
+		<div class="unit" matSuffix><b>kcal</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label>Total Fat</mat-label>
+		<input class="number-input" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label class="tabbed">Saturated fat</mat-label>
+		<input class="number-input tabbed" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label>Total Carbohydrate</mat-label>
+		<input class="number-input" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label class="tabbed">Total Sugars</mat-label>
+		<input class="number-input tabbed" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label>Dietary Fiber</mat-label>
+		<input class="number-input" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label>Protein</mat-label>
+		<input class="number-input" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+	<mat-form-field class="nutrition-fact-field" appearance="outline">
+		<mat-label>Calcium</mat-label>
+		<input class="number-input" matInput type="number">
+		<div class="unit" matSuffix><b>g</b></div>
+	</mat-form-field>
+</div>
+<div mat-dialog-actions [align]="'end'">
+	<button mat-raised-button color="warn" mat-dialog-close="">Close</button>
+	<button mat-raised-button color="primary" style="margin-left: 8px;">Save</button>
+</div>

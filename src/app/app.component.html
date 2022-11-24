@@ -8,16 +8,16 @@
   <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
   </mat-slide-toggle>
   <mat-icon>bedtime</mat-icon>
-  <button class="add-new-food-button" mat-raised-button color="accent">Add new food</button>
+  <button class="add-new-food-button" mat-raised-button color="accent" (click)="openFoodDialog()">Add new food</button>
 </mat-toolbar>
 
 <div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
 
-  <div class=""fxFlex="50">
+  <!-- <div class=""fxFlex="50">
     <h1>Buttons</h1>
 
     <div fxLayout="row" fxLayoutGap="16px">
-      <button mat-raised-button color="primary" (click)="showDialog()">
+      <button mat-raised-button color="primary">
         Open Dialog
       </button>
 
@@ -122,6 +122,6 @@
         <button mat-button>SHARE</button>
       </mat-card-actions>
     </mat-card>
-  </div>
+  </div> -->
 
 </div>

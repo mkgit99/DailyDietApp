@@ -1,0 +1,24 @@
+.mat-form-field {
+    width: 100%;
+    display: block;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.nutrition-fact-field {
+    width: 33%;
+}
+
+.tabbed {
+    margin-left: 15px;
+}
+
+.unit {
+    margin-left: 3px;
+    position: relative; 
+    bottom: 3px;
+}
