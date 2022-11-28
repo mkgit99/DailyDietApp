@@ -1,19 +1,34 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="food-icon" aria-label="Food icon-button with menu icon">
-    <mat-icon>fastfood</mat-icon>
-  </button>
-  <span>{{title}}</span>
-  <span class="toolbar-spacer"></span>
-  <mat-icon class="mr-8">brightness_5</mat-icon>
-  <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
-  </mat-slide-toggle>
-  <mat-icon>bedtime</mat-icon>
-  <button class="add-new-food-button" mat-raised-button color="accent" (click)="openFoodDialog()">Add new food</button>
+    <button
+        mat-icon-button
+        class="food-icon"
+        aria-label="Food icon-button with menu icon"
+    >
+        <mat-icon>fastfood</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="toolbar-spacer"></span>
+    <mat-icon class="mr-8">brightness_5</mat-icon>
+    <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+    </mat-slide-toggle>
+    <mat-icon>bedtime</mat-icon>
+    <button
+        class="add-new-food-button"
+        mat-raised-button
+        color="accent"
+        (click)="openFoodDialog()"
+    >
+        Add new food
+    </button>
 </mat-toolbar>
 
-<div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
-
-  <!-- <div class=""fxFlex="50">
+<div
+    class="content mat-app-background"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="16px"
+>
+    <!-- <div class=""fxFlex="50">
     <h1>Buttons</h1>
 
     <div fxLayout="row" fxLayoutGap="16px">
@@ -123,5 +138,4 @@
       </mat-card-actions>
     </mat-card>
   </div> -->
-
 </div>
