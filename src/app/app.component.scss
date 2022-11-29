@@ -3,8 +3,8 @@
 }
 
 mat-toolbar {
-    position: fixed;
-    z-index: 1000;
+    // position: fixed;
+    // z-index: 1000;
 }
 
 .flex-stretch {
@@ -12,14 +12,27 @@ mat-toolbar {
 }
 
 .content {
-    padding: 72px 16px 16px 16px;
+    // padding: 72px 16px 16px 16px;
     min-height: 100vh;
+    background-color: aquamarine;
 }
 
-mat-card {
-    max-width: 400px;
+.add-button {
+    width: 119px;
+    margin: 20px auto;
 }
 
-.add-new-food-button {
-    margin-left: 10px;
+.table-container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+//From website
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
 }

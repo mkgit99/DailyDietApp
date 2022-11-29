@@ -1,0 +1,50 @@
+{
+  "foodList": [
+    {
+      "foodName": "Banan",
+      "category": "Fruits & Vegetables",
+      "calories": 123,
+      "totalFat": 12,
+      "totalCarb": 3,
+      "protein": 2,
+      "id": 1
+    },
+    {
+      "foodName": "kiwi",
+      "brand": "",
+      "category": "Fruits & Vegetables",
+      "calories": 50,
+      "totalFat": 0,
+      "saturated": "",
+      "totalCarb": 16,
+      "totalSugar": "",
+      "protein": 1,
+      "calcium": "",
+      "id": 2
+    },
+    {
+      "foodName": "fsafas",
+      "brand": "",
+      "category": "Protein",
+      "calories": 123,
+      "totalFat": 13,
+      "saturated": 3,
+      "totalCarb": 13,
+      "totalSugar": "",
+      "fiber": 13,
+      "protein": 13,
+      "calcium": "",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

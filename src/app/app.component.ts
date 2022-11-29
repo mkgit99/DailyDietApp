@@ -1,8 +1,12 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { FoodDialogComponent } from './food-dialog/food-dialog.component';
+import { ApiService } from './services/api.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
     selector: 'app-root',
@@ -16,10 +20,29 @@ export class AppComponent implements OnInit {
 
     toggleControl = new FormControl(false);
 
-    constructor(private dialog: MatDialog, private overlay: OverlayContainer) {}
+    displayedColumns: string[] = [
+        'foodName',
+        'brand',
+        'category',
+        'calories',
+        'totalFat',
+        'totalCarb',
+        'protein',
+    ];
+    dataSource!: MatTableDataSource<any>;
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+
+    constructor(
+        private dialog: MatDialog,
+        private overlay: OverlayContainer,
+        private api: ApiService
+    ) {}
 
     ngOnInit(): void {
         this.toggleDarkMode();
+        this.getAllFoods();
     }
 
     toggleDarkMode(): void {
@@ -29,9 +52,7 @@ export class AppComponent implements OnInit {
             if (darkMode) {
                 this.overlay.getContainerElement().classList.add(darkClassName);
             } else {
-                this.overlay
-                    .getContainerElement()
-                    .classList.remove(darkClassName);
+                this.overlay.getContainerElement().classList.remove(darkClassName);
             }
         });
     }
@@ -41,5 +62,27 @@ export class AppComponent implements OnInit {
             width: '30%',
             minWidth: '400px',
         });
+    }
+
+    getAllFoods() {
+        this.api.getFood().subscribe({
+            next: (res) => {
+                this.dataSource = new MatTableDataSource(res);
+                this.dataSource.paginator = this.paginator;
+                this.dataSource.sort = this.sort;
+            },
+            error: (err) => {
+                alert('Error while fetching the records');
+            },
+        });
+    }
+
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+
+        if (this.dataSource.paginator) {
+            this.dataSource.paginator.firstPage();
+        }
     }
 }
