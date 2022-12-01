@@ -1,40 +1,60 @@
 {
   "foodList": [
     {
-      "foodName": "Banan",
-      "category": "Fruits & Vegetables",
-      "calories": 123,
-      "totalFat": 12,
-      "totalCarb": 3,
-      "protein": 2,
-      "id": 1
-    },
-    {
-      "foodName": "kiwi",
+      "foodName": "a",
       "brand": "",
       "category": "Fruits & Vegetables",
-      "calories": 50,
-      "totalFat": 0,
+      "calories": 1,
+      "totalFat": 1,
       "saturated": "",
-      "totalCarb": 16,
+      "totalCarb": 1,
       "totalSugar": "",
+      "fiber": "",
       "protein": 1,
       "calcium": "",
-      "id": 2
+      "id": 3
     },
     {
-      "foodName": "fsafas",
+      "foodName": "i",
       "brand": "",
-      "category": "Protein",
-      "calories": 123,
-      "totalFat": 13,
-      "saturated": 3,
-      "totalCarb": 13,
+      "category": "Dairy",
+      "calories": 9,
+      "totalFat": 9,
+      "saturated": "",
+      "totalCarb": 9,
       "totalSugar": "",
-      "fiber": 13,
-      "protein": 13,
+      "fiber": "",
+      "protein": 9,
       "calcium": "",
-      "id": 3
+      "id": 4
+    },
+    {
+      "foodName": "j",
+      "brand": "",
+      "category": "Dairy",
+      "calories": 10,
+      "totalFat": 10,
+      "saturated": "",
+      "totalCarb": 10,
+      "totalSugar": "",
+      "fiber": "",
+      "protein": 10,
+      "calcium": "",
+      "id": 4
+    },
+    {
+      "foodName": "k",
+      "brand": "",
+      "category": "Dairy",
+      "calories": 11,
+      "totalFat": 11,
+      "saturated": "",
+      "totalCarb": 11,
+      "totalSugar": "",
+      "fiber": "",
+      "protein": 11,
+      "calcium": "",
+      "id": 4
     }
   ],
   "comments": [

@@ -7,11 +7,13 @@ import { ApiService } from './services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { fadeOut, blub} from './animations/animations';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    animations: [fadeOut, blub],
 })
 export class AppComponent implements OnInit {
     title = 'Daily Diet App';
@@ -19,7 +21,6 @@ export class AppComponent implements OnInit {
     @HostBinding('class') className = '';
 
     toggleControl = new FormControl(false);
-
     displayedColumns: string[] = [
         'foodName',
         'brand',
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
         'totalFat',
         'totalCarb',
         'protein',
+        'action',
     ];
     dataSource!: MatTableDataSource<any>;
 
@@ -58,10 +60,17 @@ export class AppComponent implements OnInit {
     }
 
     openFoodDialog(): void {
-        this.dialog.open(FoodDialogComponent, {
-            width: '30%',
-            minWidth: '400px',
-        });
+        this.dialog
+            .open(FoodDialogComponent, {
+                width: '30%',
+                minWidth: '400px',
+            })
+            .afterClosed()
+            .subscribe((val) => {
+                if (val === 'save') {
+                    this.getAllFoods();
+                }
+            });
     }
 
     getAllFoods() {
@@ -73,6 +82,33 @@ export class AppComponent implements OnInit {
             },
             error: (err) => {
                 alert('Error while fetching the records');
+            },
+        });
+    }
+
+    editFood(row: any) {
+        this.dialog
+            .open(FoodDialogComponent, {
+                width: '30%',
+                minWidth: '400px',
+                data: row,
+            })
+            .afterClosed()
+            .subscribe((val) => {
+                if (val === 'update') {
+                    this.getAllFoods();
+                }
+            });
+    }
+
+    deleteFood(id: number) {
+        this.api.deleteFood(id).subscribe({
+            next: (res) => {
+                // alert('Product deleted successfully');
+                this.getAllFoods();
+            },
+            error: (err) => {
+                alert('Error while deleting the records');
             },
         });
     }
