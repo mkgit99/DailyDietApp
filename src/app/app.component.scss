@@ -1,25 +1,46 @@
-.toolbar-spacer {
-    flex: 1 1 auto;
-  }
-
-mat-toolbar {
-    position: fixed;
-    z-index: 1000;
+.page-title {
+    text-align: center;
+    margin: 0;
 }
 
-.flex-stretch {
-    flex: 1 0 auto;
+.toolbar-spacer {
+    flex: 1 1 auto;
 }
 
 .content {
-    padding: 72px 16px 16px 16px;
     min-height: 100vh;
 }
 
-mat-card {
-    max-width: 400px;
+.add-button {
+    width: 130px;
+    margin: 30px auto;
 }
 
-.add-new-food-button {
-    margin-left: 10px;
+.page-container {
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+.filter-field {
+    display: block;
+}
+
+.table-container {
+    position: relative;
+    max-height: 500px;
+    overflow: auto;
+}
+
+//From website
+table {
+    width: 100%;
+}
+
+tr.mat-row {
+    height: 50px;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
 }

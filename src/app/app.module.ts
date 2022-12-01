@@ -19,37 +19,39 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FoodDialogComponent } from './food-dialog/food-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FoodDialogComponent,
-    ToolbarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatDialogModule,
-    FlexLayoutModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    MatSelectModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, FoodDialogComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSlideToggleModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatDialogModule,
+        FlexLayoutModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatExpansionModule,
+        MatSelectModule,
+        HttpClientModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatTooltipModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,65 +1,79 @@
 <h1 mat-dialog-title>Add new food</h1>
 <div mat-dialog-content>
-	<mat-form-field appearance="outline">
-		<mat-label>Name</mat-label>
-		<input matInput placeholder="Ex. Banana">
-	</mat-form-field>
-	<mat-form-field appearance="outline">
-		<mat-label>Brand</mat-label>
-		<input matInput placeholder="Ex. Adidas">
-	</mat-form-field>
-	<mat-form-field appearance="outline">
-		<mat-label>Food Category</mat-label>
-		<mat-select [(ngModel)]="selectedCategory" name="category">
-			<mat-option *ngFor="let category of foodCategories" [value]="category.value">
-				{{category.value}}
-			</mat-option>
-		</mat-select>
-		<!-- <mat-error *ngIf="categoryControl.hasError('required')">Please choose category</mat-error> -->
-	</mat-form-field>
-	<h3 mat-dialog-title>Nutrition facts per <b>100g</b> :</h3>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label>Calories</mat-label>
-		<input class="number-input" matInput type="number">
-		<div class="unit" matSuffix><b>kcal</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label>Total Fat</mat-label>
-		<input class="number-input" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label class="tabbed">Saturated fat</mat-label>
-		<input class="number-input tabbed" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label>Total Carbohydrate</mat-label>
-		<input class="number-input" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label class="tabbed">Total Sugars</mat-label>
-		<input class="number-input tabbed" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label>Dietary Fiber</mat-label>
-		<input class="number-input" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label>Protein</mat-label>
-		<input class="number-input" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
-	<mat-form-field class="nutrition-fact-field" appearance="outline">
-		<mat-label>Calcium</mat-label>
-		<input class="number-input" matInput type="number">
-		<div class="unit" matSuffix><b>g</b></div>
-	</mat-form-field>
+    <form [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="foodName" matInput placeholder="Ex. Banana" />
+            <mat-error *ngIf="f['foodName'].errors">Name cannot be empty!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Brand</mat-label>
+            <input formControlName="brand" matInput placeholder="Ex. Valio" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Food Category</mat-label>
+            <mat-select formControlName="category" name="category">
+                <mat-option *ngFor="let category of foodCategories" [value]="category.value">
+                    {{ category.value }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f['category'].errors">Fill category</mat-error>
+        </mat-form-field>
+        <h3 mat-dialog-title>Nutrition facts per <b>100g</b> :</h3>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label>Calories</mat-label>
+            <input formControlName="calories" class="number-input" matInput type="number" />
+            <div class="unit" matSuffix><b>kcal</b></div>
+            <mat-error *ngIf="f['calories'].errors">Fill amount of calories</mat-error>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label>Total Fat</mat-label>
+            <input formControlName="totalFat" class="number-input" matInput type="number" />
+            <div class="unit" matSuffix><b>g</b></div>
+            <mat-error *ngIf="f['totalFat'].errors">Fill amount of fat</mat-error>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label class="tabbed">Saturated Fat</mat-label>
+            <input formControlName="saturated" class="number-input tabbed" matInput type="number" />
+            <div class="unit" matSuffix><b>g</b></div>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label>Total Carbohydrate</mat-label>
+            <input formControlName="totalCarb" class="number-input" matInput type="number" />
+            <div class="unit" matSuffix><b>g</b></div>
+            <mat-error *ngIf="f['totalCarb'].errors">Fill amount of carbohydrates</mat-error>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label class="tabbed">Total Sugars</mat-label>
+            <input
+                formControlName="totalSugar"
+                class="number-input tabbed"
+                matInput
+                type="number"
+            />
+            <div class="unit" matSuffix><b>g</b></div>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label>Dietary Fiber</mat-label>
+            <input formControlName="fiber" class="number-input" matInput type="number" />
+            <div class="unit" matSuffix><b>g</b></div>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label>Protein</mat-label>
+            <input formControlName="protein" class="number-input" matInput type="number" />
+            <div class="unit" matSuffix><b>g</b></div>
+            <mat-error *ngIf="f['protein'].errors">Fill amount of protein</mat-error>
+        </mat-form-field>
+        <mat-form-field class="nutrition-fact-field" appearance="outline">
+            <mat-label>Calcium</mat-label>
+            <input formControlName="calcium" class="number-input" matInput type="number" />
+            <div class="unit" matSuffix><b>g</b></div>
+        </mat-form-field>
+    </form>
 </div>
 <div mat-dialog-actions [align]="'end'">
-	<button mat-raised-button color="warn" mat-dialog-close="">Close</button>
-	<button mat-raised-button color="primary" style="margin-left: 8px;">Save</button>
+    <button mat-raised-button color="warn" mat-dialog-close="">Close</button>
+    <button mat-raised-button color="primary" style="margin-left: 8px" (click)="addFood()">
+        {{ actionBtn }}
+    </button>
 </div>

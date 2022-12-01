@@ -1,0 +1,70 @@
+{
+  "foodList": [
+    {
+      "foodName": "a",
+      "brand": "",
+      "category": "Fruits & Vegetables",
+      "calories": 1,
+      "totalFat": 1,
+      "saturated": "",
+      "totalCarb": 1,
+      "totalSugar": "",
+      "fiber": "",
+      "protein": 1,
+      "calcium": "",
+      "id": 3
+    },
+    {
+      "foodName": "i",
+      "brand": "",
+      "category": "Dairy",
+      "calories": 9,
+      "totalFat": 9,
+      "saturated": "",
+      "totalCarb": 9,
+      "totalSugar": "",
+      "fiber": "",
+      "protein": 9,
+      "calcium": "",
+      "id": 4
+    },
+    {
+      "foodName": "j",
+      "brand": "",
+      "category": "Dairy",
+      "calories": 10,
+      "totalFat": 10,
+      "saturated": "",
+      "totalCarb": 10,
+      "totalSugar": "",
+      "fiber": "",
+      "protein": 10,
+      "calcium": "",
+      "id": 4
+    },
+    {
+      "foodName": "k",
+      "brand": "",
+      "category": "Dairy",
+      "calories": 11,
+      "totalFat": 11,
+      "saturated": "",
+      "totalCarb": 11,
+      "totalSugar": "",
+      "fiber": "",
+      "protein": 11,
+      "calcium": "",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
