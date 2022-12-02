@@ -2,12 +2,12 @@ import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { FoodDialogComponent } from './food-dialog/food-dialog.component';
-import { ApiService } from './services/api.service';
+import { FoodDialogComponent } from './shared/components/food-dialog/food-dialog.component';
+import { ApiService } from './core/http/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { fadeOut, blub} from './animations/animations';
+import { fadeOut, blub } from './shared/animations/animations';
 
 @Component({
     selector: 'app-root',
