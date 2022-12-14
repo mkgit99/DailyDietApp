@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Input, Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+    title = 'Daily Diet App';
+    @Input() toggle: any;
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {}
 }

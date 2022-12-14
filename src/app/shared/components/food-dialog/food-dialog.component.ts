@@ -63,7 +63,7 @@ export class FoodDialogComponent implements OnInit {
         }
     }
 
-    get f() {
+    get fControl() {
         return this.formGroup.controls;
     }
 

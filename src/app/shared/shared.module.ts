@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AboutComponent } from './components/about/about.component';
-import { DailyDietPageComponent } from './components/daily-diet-page/daily-diet-page.component';
-import { ProductsPageComponent } from './components/products-page/products-page.component';
-
-
+import { FoodDialogComponent } from './components/food-dialog/food-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AboutComponent,
-    DailyDietPageComponent,
-    ProductsPageComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [FoodDialogComponent],
+    imports: [CommonModule, MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule],
+    exports: [FoodDialogComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

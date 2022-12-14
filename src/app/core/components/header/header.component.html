@@ -1,1 +1,17 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Food icon-button with menu icon">
+        <mat-icon>fastfood</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="toolbar-spacer"></span>
+
+    <a mat-button routerLink="home">Home</a>
+    <a mat-button routerLink="about">About</a>
+    <a mat-button routerLink="products">Products</a>
+    <a mat-button routerLink="your-diet">Your Diet</a>
+    <a mat-raised-button color="accent" style="margin-right: 20px">Sign In</a>
+
+    <mat-icon class="mr-8">brightness_5</mat-icon>
+    <mat-slide-toggle [formControl]="toggle" class="mr-8"> </mat-slide-toggle>
+    <mat-icon>bedtime</mat-icon>
+</mat-toolbar>
