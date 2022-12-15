@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoreModule } from './core/core.module';
 import { AboutComponent } from './modules/about/about.component';
 import { HomeComponent } from './modules/home/home.component';
 import { ProductsComponent } from './modules/products/products.component';
@@ -10,7 +11,7 @@ const routes: Routes = [
 	{ path: 'about', component: AboutComponent },
 	{ path: 'products', component: ProductsComponent },
 	{ path: 'your-diet', component: YourDietComponent },
-	{ path: '', redirectTo: '/home', pathMatch: 'full' },
+	{ path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@ import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { FoodDialogComponent } from './shared/components/food-dialog/food-dialog.component';
+// import { FoodDialogComponent } from './shared/components/food-dialog/food-dialog.component';
 import { ApiService } from './core/http/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -36,14 +36,14 @@ export class AppComponent implements OnInit {
     @ViewChild(MatSort) sort!: MatSort;
 
     constructor(
-        private dialog: MatDialog,
+        // private dialog: MatDialog,
         private overlay: OverlayContainer,
         private api: ApiService
     ) {}
 
     ngOnInit(): void {
         this.toggleDarkMode();
-        this.getAllFoods();
+        // this.getAllFoods();
     }
 
     toggleDarkMode(): void {
@@ -58,66 +58,66 @@ export class AppComponent implements OnInit {
         });
     }
 
-    openFoodDialog(): void {
-        this.dialog
-            .open(FoodDialogComponent, {
-                width: '30%',
-                minWidth: '400px',
-            })
-            .afterClosed()
-            .subscribe((val) => {
-                if (val === 'save') {
-                    this.getAllFoods();
-                }
-            });
-    }
+    // openFoodDialog(): void {
+    //     this.dialog
+    //         .open(FoodDialogComponent, {
+    //             width: '30%',
+    //             minWidth: '400px',
+    //         })
+    //         .afterClosed()
+    //         .subscribe((val) => {
+    //             if (val === 'save') {
+    //                 this.getAllFoods();
+    //             }
+    //         });
+    // }
 
-    getAllFoods() {
-        this.api.getFood().subscribe({
-            next: (res) => {
-                this.dataSource = new MatTableDataSource(res);
-                this.dataSource.paginator = this.paginator;
-                this.dataSource.sort = this.sort;
-            },
-            error: (err) => {
-                alert('Error while fetching the records');
-            },
-        });
-    }
+    // getAllFoods() {
+    //     this.api.getFood().subscribe({
+    //         next: (res) => {
+    //             this.dataSource = new MatTableDataSource(res);
+    //             this.dataSource.paginator = this.paginator;
+    //             this.dataSource.sort = this.sort;
+    //         },
+    //         error: (err) => {
+    //             alert('Error while fetching the records');
+    //         },
+    //     });
+    // }
 
-    editFood(row: any) {
-        this.dialog
-            .open(FoodDialogComponent, {
-                width: '30%',
-                minWidth: '400px',
-                data: row,
-            })
-            .afterClosed()
-            .subscribe((val) => {
-                if (val === 'update') {
-                    this.getAllFoods();
-                }
-            });
-    }
+    // editFood(row: any) {
+    //     this.dialog
+    //         .open(FoodDialogComponent, {
+    //             width: '30%',
+    //             minWidth: '400px',
+    //             data: row,
+    //         })
+    //         .afterClosed()
+    //         .subscribe((val) => {
+    //             if (val === 'update') {
+    //                 this.getAllFoods();
+    //             }
+    //         });
+    // }
 
-    deleteFood(id: number) {
-        this.api.deleteFood(id).subscribe({
-            next: (res) => {
-                // alert('Product deleted successfully');
-                this.getAllFoods();
-            },
-            error: (err) => {
-                alert('Error while deleting the records');
-            },
-        });
-    }
+    // deleteFood(id: number) {
+    //     this.api.deleteFood(id).subscribe({
+    //         next: (res) => {
+    //             // alert('Product deleted successfully');
+    //             this.getAllFoods();
+    //         },
+    //         error: (err) => {
+    //             alert('Error while deleting the records');
+    //         },
+    //     });
+    // }
 
-    applyFilter(event: Event) {
-        const filterValue = (event.target as HTMLInputElement).value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
+    // applyFilter(event: Event) {
+    //     const filterValue = (event.target as HTMLInputElement).value;
+    //     this.dataSource.filter = filterValue.trim().toLowerCase();
 
-        if (this.dataSource.paginator) {
-            this.dataSource.paginator.firstPage();
-        }
-    }
+    //     if (this.dataSource.paginator) {
+    //         this.dataSource.paginator.firstPage();
+    //     }
+    // }
 }

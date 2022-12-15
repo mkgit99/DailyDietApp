@@ -20,6 +20,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './core/components/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
     declarations: [AppComponent],
@@ -41,6 +47,13 @@ import { SharedModule } from './shared/shared.module';
         // MatTooltipModule,
         CoreModule,
 		SharedModule,
+		// MatToolbarModule,
+        // MatIconModule,
+        // MatSlideToggleModule,
+        // MatButtonModule,
+        // FormsModule,
+		// ReactiveFormsModule,
+		// MatTabsModule
     ],
     providers: [],
     bootstrap: [AppComponent],
