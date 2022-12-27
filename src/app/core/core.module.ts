@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [HeaderComponent, FooterComponent],
+    declarations: [FooterComponent],
     imports: [
         CommonModule,
         MatToolbarModule,
@@ -19,6 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         FormsModule,
 		ReactiveFormsModule
     ],
-    exports: [HeaderComponent, FooterComponent],
+    exports: [FooterComponent],
 })
 export class CoreModule {}

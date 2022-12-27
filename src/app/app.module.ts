@@ -25,10 +25,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
-import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, HeaderComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -47,13 +46,12 @@ import {MatTabsModule} from '@angular/material/tabs';
         // MatTooltipModule,
         CoreModule,
 		SharedModule,
-		// MatToolbarModule,
-        // MatIconModule,
-        // MatSlideToggleModule,
-        // MatButtonModule,
-        // FormsModule,
-		// ReactiveFormsModule,
-		// MatTabsModule
+		MatToolbarModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        MatButtonModule,
+        FormsModule,
+		ReactiveFormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
