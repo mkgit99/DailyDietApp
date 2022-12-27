@@ -1,17 +1,18 @@
 @use '@angular/material' as mat;
-// @use './styles/themes/palette-helper';
-@import '@angular/material/theming';
 
+@import '@angular/material/theming';
 @import './styles/styles-variables';
 @import './styles/style-reset';
-
-@include mat.core();
 
 @import './styles/themes/black-theme.scss';
 @import './styles/themes/light-theme.scss';
 
-@include mat.all-component-themes($light-theme);
+@include mat.core();
 
-.darkMode {
+.app-light-mode {
+    @include mat.all-component-themes($light-theme);
+}
+
+.app-dark-mode {
     @include mat.all-component-themes($dark-theme);
 }

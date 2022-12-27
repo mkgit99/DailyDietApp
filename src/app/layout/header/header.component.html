@@ -4,13 +4,9 @@
     </button>
     <span>{{ title }}</span>
     <span class="toolbar-spacer"></span>
-    <button mat-button routerLinkActive="active" routerLink="/home">Home</button>
-    <button mat-button routerLinkActive="active" routerLink="/about">About</button>
-    <button mat-button routerLinkActive="active" routerLink="/products">Products</button>
-    <button mat-button routerLinkActive="active" routerLink="/your-diet">Your Diet</button>
+    <button mat-button *ngFor="let item of navItems" routerLinkActive="active" [routerLink]="item.link">{{ item.title }}</button>
     <button mat-raised-button routerLinkActive="active" routerLink="/login" color="accent" style="margin-right: 20px">Sign In</button>
-
     <mat-icon class="mr-8">brightness_5</mat-icon>
-    <mat-slide-toggle [formControl]="toggle" class="mr-8"> </mat-slide-toggle>
+    <mat-slide-toggle [formControl]="toggle" class="mr-8"></mat-slide-toggle>
     <mat-icon>bedtime</mat-icon>
 </mat-toolbar>
