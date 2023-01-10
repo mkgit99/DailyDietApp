@@ -1,8 +1,8 @@
 export const themes = [
     {
-        name: 'app-light-theme',
+        name: 'my-light-theme',
     },
     {
-        name: 'app-dark-theme',
+        name: 'my-dark-theme',
     },
 ];

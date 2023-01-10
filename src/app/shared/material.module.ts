@@ -6,6 +6,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [],
@@ -15,7 +16,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatSlideToggleModule,
         MatButtonModule,
         MatFormFieldModule,
-		MatSelectModule
+		MatSelectModule,
+		MatDialogModule,
     ],
     exports: [
         MatToolbarModule,
@@ -23,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatSlideToggleModule,
         MatButtonModule,
         MatFormFieldModule,
-		MatSelectModule
+		MatSelectModule,
+		MatDialogModule,
     ],
 })
 export class MaterialModule {}

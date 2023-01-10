@@ -1,13 +1,17 @@
 import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { OverlayContainer } from '@angular/cdk/overlay';
-// import { FoodDialogComponent } from './shared/components/food-dialog/food-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from './core/http/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { fadeOut } from './shared/animations/animations';
+
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { map } from 'rxjs/operators';
+import { themes } from './core/constants/themes';
+import { ThemeService } from './core/services/theme.service';
+// import { FoodDialogComponent } from './shared/components/food-dialog/food-dialog.component';
 
 @Component({
     selector: 'app-root',
@@ -16,46 +20,59 @@ import { fadeOut } from './shared/animations/animations';
     animations: [fadeOut],
 })
 export class AppComponent implements OnInit {
+    // displayedColumns: string[] = [
+    //     'foodName',
+    //     'brand',
+    //     'category',
+    //     'calories',
+    //     'totalFat',
+    //     'totalCarb',
+    //     'protein',
+    //     'action',
+    // ];
+    // dataSource!: MatTableDataSource<any>;
 
-    @HostBinding('class') className = '';
-    toggleControl = new FormControl(false);
+    // @ViewChild(MatPaginator) paginator!: MatPaginator;
+    // @ViewChild(MatSort) sort!: MatSort;
 
-    displayedColumns: string[] = [
-        'foodName',
-        'brand',
-        'category',
-        'calories',
-        'totalFat',
-        'totalCarb',
-        'protein',
-        'action',
-    ];
-    dataSource!: MatTableDataSource<any>;
+    currentTheme: string = '';
 
-    @ViewChild(MatPaginator) paginator!: MatPaginator;
-    @ViewChild(MatSort) sort!: MatSort;
+    currentActiveTheme$ = this.themeService.getDarkTheme().pipe(
+        map((isDarkTheme: boolean) => {
+            const [lightTheme, darkTheme] = themes;
+
+            this.currentTheme = isDarkTheme ? darkTheme.name : lightTheme.name;
+
+            if (this.overlayContainer) {
+                const overlayContainerClasses =
+                    this.overlayContainer.getContainerElement().classList;
+                const themeClassesToRemove = Array.from(overlayContainerClasses).filter(
+                    (item: string) => item.includes('-theme')
+                );
+                if (themeClassesToRemove.length) {
+                    overlayContainerClasses.remove(...themeClassesToRemove);
+                }
+                overlayContainerClasses.add(this.currentTheme);
+            }
+
+            return this.currentTheme;
+        })
+    );
 
     constructor(
-        // private dialog: MatDialog,
-        private overlay: OverlayContainer,
-        private api: ApiService
-    ) {}
+        private themeService: ThemeService,
+        private overlayContainer: OverlayContainer
+    // private dialog: MatDialog,
+    // private api: ApiService
+	)
+    {}
 
     ngOnInit(): void {
-        this.toggleDarkMode();
         // this.getAllFoods();
-    }
 
-    toggleDarkMode(): void {
-        this.toggleControl.valueChanges.subscribe((darkMode) => {
-            const darkClassName = 'app-dark-mode';
-            this.className = darkMode ? darkClassName : '';
-            if (darkMode) {
-                this.overlay.getContainerElement().classList.add(darkClassName);
-            } else {
-                this.overlay.getContainerElement().classList.remove(darkClassName);
-            }
-        });
+        if (this.overlayContainer) {
+            this.overlayContainer.getContainerElement().classList.add(this.currentTheme);
+        }
     }
 
     // openFoodDialog(): void {

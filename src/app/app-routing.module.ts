@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoreModule } from './core/core.module';
 import { AboutComponent } from './modules/about/about.component';
 import { HomeComponent } from './modules/home/home.component';
 import { ProductsComponent } from './modules/products/products.component';
 import { YourDietComponent } from './modules/your-diet/your-diet.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'about', component: AboutComponent },
 	{ path: 'products', component: ProductsComponent },
 	{ path: 'your-diet', component: YourDietComponent },
-	{ path: '**', redirectTo: '/home', pathMatch: 'full' },
+	{ path: '', redirectTo: '/home', pathMatch: 'full' },
+	{ path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

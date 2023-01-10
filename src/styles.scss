@@ -9,10 +9,10 @@
 
 @include mat.core();
 
-.app-light-mode {
+.my-light-theme {
     @include mat.all-component-themes($light-theme);
 }
 
-.app-dark-mode {
+.my-dark-theme {
     @include mat.all-component-themes($dark-theme);
 }
