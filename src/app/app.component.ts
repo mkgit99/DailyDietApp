@@ -61,10 +61,8 @@ export class AppComponent implements OnInit {
 
     constructor(
         private themeService: ThemeService,
-        private overlayContainer: OverlayContainer
-    // private dialog: MatDialog,
-    // private api: ApiService
-	)
+        private overlayContainer: OverlayContainer // private dialog: MatDialog,
+    ) // private api: ApiService
     {}
 
     ngOnInit(): void {

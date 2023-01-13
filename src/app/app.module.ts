@@ -11,6 +11,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { AuthModule } from './modules/auth/auth.module';
 
 // import { MatDialogModule } from '@angular/material/dialog';
 // import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,16 +25,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-    declarations: [AppComponent, HeaderComponent, FooterComponent],
+    declarations: [AppComponent, HeaderComponent, FooterComponent, AuthLayoutComponent],
     imports: [
         BrowserModule,
-		
+
+        AuthModule,
+
         CoreModule,
-		SharedModule,
+        SharedModule,
 
-		AppRoutingModule,
+        AppRoutingModule,
 
-		BrowserAnimationsModule,
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

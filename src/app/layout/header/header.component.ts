@@ -1,7 +1,6 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
-import { DialogAnimationsExampleDialogComponent } from 'src/app/dialog-animations-example-dialog/dialog-animations-example-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({

@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ThemeService {
-  private isDarkTheme: BehaviorSubject<boolean>;
+    private isDarkTheme: BehaviorSubject<boolean>;
 
-  constructor() {
-    this.isDarkTheme = new BehaviorSubject<boolean>(
-      localStorage.getItem('isDarkTheme') === 'true'
-    );
-  }
+    constructor() {
+        this.isDarkTheme = new BehaviorSubject<boolean>(
+            localStorage.getItem('isDarkTheme') === 'true'
+        );
+    }
 
-  setDarkTheme(isDarkTheme: boolean) {
-    this.isDarkTheme.next(isDarkTheme);
-    localStorage.setItem('isDarkTheme', this.isDarkTheme.value.toString());
-  }
+    setDarkTheme(isDarkTheme: boolean) {
+        this.isDarkTheme.next(isDarkTheme);
+        localStorage.setItem('isDarkTheme', this.isDarkTheme.value.toString());
+    }
 
-  getDarkTheme(): Observable<boolean> {
-    return this.isDarkTheme;
-  }
+    getDarkTheme(): Observable<boolean> {
+        return this.isDarkTheme;
+    }
 }

@@ -16,8 +16,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatSlideToggleModule,
         MatButtonModule,
         MatFormFieldModule,
-		MatSelectModule,
-		MatDialogModule,
+        MatSelectModule,
+        MatDialogModule,
     ],
     exports: [
         MatToolbarModule,
@@ -25,8 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatSlideToggleModule,
         MatButtonModule,
         MatFormFieldModule,
-		MatSelectModule,
-		MatDialogModule,
+        MatSelectModule,
+        MatDialogModule,
     ],
 })
 export class MaterialModule {}

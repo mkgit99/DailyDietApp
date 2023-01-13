@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YourDietComponent } from './your-diet.component';
+import { AuthLayoutComponent } from './auth-layout.component';
 
-describe('YourDietComponent', () => {
-    let component: YourDietComponent;
-    let fixture: ComponentFixture<YourDietComponent>;
+describe('AuthLayoutComponent', () => {
+    let component: AuthLayoutComponent;
+    let fixture: ComponentFixture<AuthLayoutComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [YourDietComponent],
+            declarations: [AuthLayoutComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(YourDietComponent);
+        fixture = TestBed.createComponent(AuthLayoutComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
