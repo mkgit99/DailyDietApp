@@ -5,8 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './material.module';
 
-// import { FoodDialogComponent } from './components/food-dialog/food-dialog.component';
-
 @NgModule({
     declarations: [],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],

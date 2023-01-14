@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ApiService {
+export class FoodService {
     foodListURL: string = 'http://localhost:3000/foodList/';
 
     constructor(private http: HttpClient) {}

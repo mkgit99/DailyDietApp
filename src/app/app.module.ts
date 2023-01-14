@@ -14,16 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { AuthModule } from './modules/auth/auth.module';
 
-// import { MatDialogModule } from '@angular/material/dialog';
-// import { MatFormFieldModule } from '@angular/material/form-field';
-// import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatInputModule } from '@angular/material/input';
-// import { MatExpansionModule } from '@angular/material/expansion';
-// import { MatTableModule } from '@angular/material/table';
-// import { MatPaginatorModule } from '@angular/material/paginator';
-// import { MatSortModule } from '@angular/material/sort';
-// import { MatTooltipModule } from '@angular/material/tooltip';
-
 @NgModule({
     declarations: [AppComponent, HeaderComponent, FooterComponent, AuthLayoutComponent],
     imports: [

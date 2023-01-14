@@ -1,11 +1,12 @@
-<!-- <div class="page-container">
-        <h1 class="page-title">List of your products</h1>
-        <mat-form-field class="filter-field">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Kiwi" #input />
-        </mat-form-field>
+<div class="page-container" @fadeOut>
+    <h1 class="page-title">List of your products</h1>
+    <mat-form-field class="filter-field">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Kiwi" #input />
+    </mat-form-field>
 
-        <div class="mat-elevation-z8 table-container">
+    <div class="mat-elevation-z8">
+        <div class="table-container">
             <table mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="foodName">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
@@ -64,23 +65,22 @@
                     matTooltip="Nutrition facts are per 100g"
                     matTooltipPosition="above"
                 ></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns" @fadeOut></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
                 <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell" colspan="4">
-                        No data matching the filter "{{ input.value }}"
+                        No products matching the filter "{{ input.value }}"
                     </td>
                 </tr>
             </table>
-            <mat-paginator
-                [pageSizeOptions]="[5, 10, 25, 100]"
-                aria-label="Select page of users"
-            ></mat-paginator>
         </div>
+        <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page of products"
+        ></mat-paginator>
+    </div>
 
-        <div class="add-button">
-            <button mat-raised-button color="accent" (click)="openFoodDialog()">
-                Add new product
-            </button>
-        </div>
-    </div> -->
+    <div class="add-button">
+        <button mat-raised-button color="accent" (click)="openFoodDialog()">Add new product</button>
+    </div>
+</div>

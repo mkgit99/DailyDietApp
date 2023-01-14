@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccessGuard } from './core/guards/access.guard';
-import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
-import { ProductsComponent } from './modules/products/products.component';
 import { YourDietComponent } from './modules/your-diet/your-diet.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
@@ -17,20 +15,18 @@ const routes: Routes = [
     },
     {
         path: 'auth',
-        component: AuthLayoutComponent,
         loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
     },
     {
         path: 'products',
-        component: ProductsComponent,
+        loadChildren: () =>
+            import('./modules/products/products.module').then((m) => m.ProductsModule),
         canActivate: [AccessGuard],
-        data: { requiresLogin: true },
     },
     {
         path: 'your-diet',
         component: YourDietComponent,
         canActivate: [AccessGuard],
-        data: { requiresLogin: true },
     },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent },
