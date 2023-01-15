@@ -1,61 +1,18 @@
 @use '@angular/material' as mat;
-@use 'palette-helper';
+
 @import '@angular/material/theming';
+@import './styles/styles-variables';
+@import './styles/style-reset';
+
+@import './styles/themes/black-theme.scss';
+@import './styles/themes/light-theme.scss';
 
 @include mat.core();
 
-// Light theme
-$light-background: rgba(135, 255, 145, 0.15);
-$light-primary: mat.define-palette(mat.$teal-palette, 500, 100, 900);
-$light-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
-$light-warn: mat.define-palette(mat.$red-palette);
-$light-theme: mat.define-light-theme(
-    (
-        color: (
-            primary: $light-primary,
-            accent: $light-accent,
-            warn: $light-warn,
-        ),
-    )
-);
+.my-light-theme {
+    @include mat.all-component-themes($light-theme);
+}
 
-$light-theme: palette-helper.modify-background($light-theme, $light-background);
-@include mat.all-component-themes($light-theme);
-
-// Dark theme
-$dark-theme: mat.define-dark-theme(
-    (
-        color: (
-            primary: $light-primary,
-            accent: $light-accent,
-            warn: $light-warn,
-        ),
-    )
-);
-
-.darkMode {
+.my-dark-theme {
     @include mat.all-component-themes($dark-theme);
-}
-
-//BASIC
-html,
-body {
-    height: 100%;
-}
-body {
-    margin: 0;
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
-h2,
-p {
-    padding: 16px;
-}
-
-.mr-8 {
-    margin-right: 8px;
-}
-
-.mat-tooltip {
-    font-size: 15px !important;
 }

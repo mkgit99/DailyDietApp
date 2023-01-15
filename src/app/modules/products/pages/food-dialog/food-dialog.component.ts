@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ApiService } from '../services/api.service';
+import { FoodService } from 'src/app/data/services/food.service';
+import { Food } from 'src/app/data/models/food';
 
 interface FoodCategory {
     value: string;
@@ -26,8 +27,8 @@ export class FoodDialogComponent implements OnInit {
     constructor(
         private dialogRef: MatDialogRef<FoodDialogComponent>,
         private formBuilder: FormBuilder,
-        private api: ApiService,
-        @Inject(MAT_DIALOG_DATA) public editData: any
+        private foodService: FoodService,
+        @Inject(MAT_DIALOG_DATA) public editData: any,
     ) {
         this.dialogRef.disableClose = true;
     }
@@ -49,28 +50,28 @@ export class FoodDialogComponent implements OnInit {
 
         if (this.editData) {
             this.actionBtn = 'Update';
-            this.formGroup.controls['foodName'].setValue(this.editData.foodName);
-            this.formGroup.controls['brand'].setValue(this.editData.brand);
-            this.formGroup.controls['category'].setValue(this.editData.category);
-            this.formGroup.controls['calories'].setValue(this.editData.calories);
-            this.formGroup.controls['totalFat'].setValue(this.editData.totalFat);
-            this.formGroup.controls['saturated'].setValue(this.editData.saturated);
-            this.formGroup.controls['totalCarb'].setValue(this.editData.totalCarb);
-            this.formGroup.controls['totalSugar'].setValue(this.editData.totalSugar);
-            this.formGroup.controls['fiber'].setValue(this.editData.fiber);
-            this.formGroup.controls['protein'].setValue(this.editData.protein);
-            this.formGroup.controls['calcium'].setValue(this.editData.calcium);
+            this.fControl['foodName'].setValue(this.editData.foodName);
+            this.fControl['brand'].setValue(this.editData.brand);
+            this.fControl['category'].setValue(this.editData.category);
+            this.fControl['calories'].setValue(this.editData.calories);
+            this.fControl['totalFat'].setValue(this.editData.totalFat);
+            this.fControl['saturated'].setValue(this.editData.saturated);
+            this.fControl['totalCarb'].setValue(this.editData.totalCarb);
+            this.fControl['totalSugar'].setValue(this.editData.totalSugar);
+            this.fControl['fiber'].setValue(this.editData.fiber);
+            this.fControl['protein'].setValue(this.editData.protein);
+            this.fControl['calcium'].setValue(this.editData.calcium);
         }
     }
 
-    get f() {
+    get fControl() {
         return this.formGroup.controls;
     }
 
     addFood() {
         if (!this.editData) {
             if (this.formGroup.valid) {
-                this.api.postFood(this.formGroup.value).subscribe({
+                this.foodService.postFood(this.formGroup.value).subscribe({
                     next: (res) => {
                         // alert('Food added successfully');
                         this.formGroup.reset();
@@ -87,7 +88,7 @@ export class FoodDialogComponent implements OnInit {
     }
 
     updateFood() {
-        this.api.putFood(this.formGroup.value, this.editData.id).subscribe({
+        this.foodService.putFood(this.formGroup.value, this.editData.id).subscribe({
             next: (res) => {
                 // alert('Food updated successfully');
                 this.formGroup.reset();
