@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>Add new product</h1>
-<div mat-dialog-content>
-    <form [formGroup]="formGroup">
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
+<div mat-dialog-content *ngIf="food">
+    <form [formGroup]="foodFormGroup">
         <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input formControlName="foodName" matInput placeholder="Ex. Banana" />
@@ -73,7 +73,22 @@
 </div>
 <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close="">Close</button>
-    <button mat-raised-button color="primary" style="margin-left: 8px" (click)="addFood()">
-        {{ actionBtn }}
+    <button
+        mat-raised-button
+        color="primary"
+        style="margin-left: 8px"
+        *ngIf="!food.id"
+        (click)="createFood(food)"
+    >
+        Create
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        style="margin-left: 8px"
+        *ngIf="food.id"
+        (click)="updateFood(food)"
+    >
+        Update
     </button>
 </div>

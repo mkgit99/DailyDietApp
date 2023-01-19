@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'header',

@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs/internal/Observable';
+import { Food } from '../models/food';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FoodService {
-    foodListURL: string = 'http://localhost:3000/foodList/';
+    private url = 'Food';
 
     constructor(private http: HttpClient) {}
 
-    postFood(data: any) {
-        return this.http.post<any>(this.foodListURL, data);
+    public getFoods(): Observable<Food[]> {
+        return this.http.get<Food[]>(`${environment.apiURL}/${this.url}`);
     }
 
-    getFood() {
-        return this.http.get<any>(this.foodListURL);
+    public createFood(food: Food): Observable<Food[]> {
+        return this.http.post<Food[]>(`${environment.apiURL}/${this.url}`, food);
     }
 
-    putFood(data: any, id: number) {
-        return this.http.put<any>(this.foodListURL + id, data);
+    public updateFood(food: Food) {
+        return this.http.put<Food[]>(`${environment.apiURL}/${this.url}`, food);
     }
 
-    deleteFood(id: number) {
-        return this.http.delete<any>(this.foodListURL + id);
+    public deleteFood(id: number) {
+        return this.http.delete<Food[]>(`${environment.apiURL}/${this.url}/${id}`);
     }
 }

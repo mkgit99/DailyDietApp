@@ -9,6 +9,7 @@ import { FoodService } from 'src/app/data/services/food.service';
 import { FoodDialogComponent } from '../food-dialog/food-dialog.component';
 
 import { fadeOut } from 'src/app/shared/animations/animations';
+import { Food } from 'src/app/data/models/food';
 
 @Component({
     selector: 'app-food-table',
@@ -17,6 +18,10 @@ import { fadeOut } from 'src/app/shared/animations/animations';
     animations: [fadeOut],
 })
 export class FoodTableComponent implements OnInit {
+    foodDataSource!: MatTableDataSource<Food>;
+	@ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+
     displayedColumns: string[] = [
         'foodName',
         'brand',
@@ -27,15 +32,24 @@ export class FoodTableComponent implements OnInit {
         'protein',
         'action',
     ];
-    dataSource!: MatTableDataSource<any>;
-
-    @ViewChild(MatPaginator) paginator!: MatPaginator;
-    @ViewChild(MatSort) sort!: MatSort;
 
     constructor(private dialog: MatDialog, private foodService: FoodService) {}
 
     ngOnInit(): void {
-        this.getAllFoods();
+        this.getFoods();
+    }
+
+    getFoods() {
+        this.foodService.getFoods().subscribe({
+            next: (result: Food[]) => {
+                this.foodDataSource = new MatTableDataSource<Food>(result);
+                this.foodDataSource.paginator = this.paginator;
+                this.foodDataSource.sort = this.sort;
+            },
+            error: () => {
+                alert('Error while fetching the records');
+            },
+        });
     }
 
     openFoodDialog(): void {
@@ -47,35 +61,22 @@ export class FoodTableComponent implements OnInit {
             .afterClosed()
             .subscribe((val) => {
                 if (val === 'save') {
-                    this.getAllFoods();
+                    this.getFoods();
                 }
             });
     }
 
-    getAllFoods() {
-        this.foodService.getFood().subscribe({
-            next: (res) => {
-                this.dataSource = new MatTableDataSource(res);
-                this.dataSource.paginator = this.paginator;
-                this.dataSource.sort = this.sort;
-            },
-            error: (err) => {
-                alert('Error while fetching the records');
-            },
-        });
-    }
-
-    editFood(row: any) {
+    editFood(food: Food) {
         this.dialog
             .open(FoodDialogComponent, {
                 width: '30%',
                 minWidth: '400px',
-                data: row,
+                data: food,
             })
             .afterClosed()
             .subscribe((val) => {
                 if (val === 'update') {
-                    this.getAllFoods();
+                    this.getFoods();
                 }
             });
     }
@@ -83,8 +84,7 @@ export class FoodTableComponent implements OnInit {
     deleteFood(id: number) {
         this.foodService.deleteFood(id).subscribe({
             next: (res) => {
-                // alert('Product deleted successfully');
-                this.getAllFoods();
+                this.getFoods();
             },
             error: (err) => {
                 alert('Error while deleting the records');
@@ -92,12 +92,66 @@ export class FoodTableComponent implements OnInit {
         });
     }
 
+    // openFoodDialog(): void {
+    //     this.dialog
+    //         .open(FoodDialogComponent, {
+    //             width: '30%',
+    //             minWidth: '400px',
+    //         })
+    //         .afterClosed()
+    //         .subscribe((val) => {
+    //             if (val === 'save') {
+    //                 this.getAllFoods();
+    //             }
+    //         });
+    // }
+
+    // getAllFoods() {
+    //     this.foodService.getAllFood().subscribe({
+    //         next: (res) => {
+    //             this.dataSource = new MatTableDataSource(res);
+    //             this.dataSource.paginator = this.paginator;
+    //             this.dataSource.sort = this.sort;
+    //         },
+    //         error: (err) => {
+    //             alert('Error while fetching the records');
+    //         },
+    //     });
+    // }
+
+    // editFood(row: any) {
+    //     this.dialog
+    //         .open(FoodDialogComponent, {
+    //             width: '30%',
+    //             minWidth: '400px',
+    //             data: row,
+    //         })
+    //         .afterClosed()
+    //         .subscribe((val) => {
+    //             if (val === 'update') {
+    //                 this.getAllFoods();
+    //             }
+    //         });
+    // }
+
+    // deleteFood(id: number) {
+    //     this.foodService.deleteFood(id).subscribe({
+    //         next: (res) => {
+    //             // alert('Product deleted successfully');
+    //             this.getAllFoods();
+    //         },
+    //         error: (err) => {
+    //             alert('Error while deleting the records');
+    //         },
+    //     });
+    // }
+
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
+        this.foodDataSource.filter = filterValue.trim().toLowerCase();
 
-        if (this.dataSource.paginator) {
-            this.dataSource.paginator.firstPage();
+        if (this.foodDataSource.paginator) {
+            this.foodDataSource.paginator.firstPage();
         }
     }
 }

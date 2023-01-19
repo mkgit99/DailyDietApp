@@ -13,20 +13,6 @@
       "protein": 1,
       "calcium": 1,
       "id": 1
-    },
-    {
-      "foodName": "dsadsadas",
-      "brand": "dds",
-      "category": "Protein",
-      "calories": 2222.2,
-      "totalFat": 2,
-      "saturated": 2,
-      "totalCarb": 2,
-      "totalSugar": 2,
-      "fiber": 2,
-      "protein": 2,
-      "calcium": 2,
-      "id": 2
     }
   ],
   "comments": [

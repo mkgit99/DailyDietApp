@@ -35,3 +35,15 @@ tr.mat-row {
     width: 130px;
     margin: 30px auto;
 }
+
+.mat-column-calories,
+.mat-column-totalFat,
+.mat-column-totalCarb,
+.mat-column-protein,
+.mat-column-action {
+    word-wrap: break-word !important;
+    flex: 0 0 9% !important;
+    width: 9% !important;
+    word-wrap: break-word;
+}
+

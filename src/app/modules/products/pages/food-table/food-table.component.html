@@ -46,7 +46,7 @@
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
                     <td mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="editFood(food)">
+                        <button mat-icon-button color="primary" (click)="editFood(row)">
                             <mat-icon>edit</mat-icon>
                         </button>
                         <button
@@ -84,25 +84,3 @@
         <button mat-raised-button color="accent" (click)="openFoodDialog()">Add new product</button>
     </div>
 </div>
-<!-- <table style="width: 500px;">
-	<thead>
-		<th>foodname</th>
-		<th>brand</th>
-		<th>category</th>
-		<th>calories</th>
-		<th>totalFat</th>
-		<th>totalCarb</th>
-		<th>protein</th>
-	</thead>
-	<tbody>
-		<tr style="text-align: center;" *ngFor="let food of foods">
-			<td>{{food.foodName}}</td>
-			<td>{{food.brand}}</td>
-			<td>{{food.category}}</td>
-			<td>{{food.calories}}</td>
-			<td>{{food.totalFat}}</td>
-			<td>{{food.totalCarb}}</td>
-			<td>{{food.protein}}</td>
-		</tr>
-	</tbody>
-</table> -->
