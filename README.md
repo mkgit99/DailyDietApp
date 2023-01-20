@@ -2,9 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
 
-## Json server
-
-Run `json-server --watch db.json` for a dev server. Navigate to `http://localhost:3000/`.
+![alt text](https://github.com/mkgit99/DailyDietApp/blob/master/dialog.png?raw=true)
 
 ## Development server
 
