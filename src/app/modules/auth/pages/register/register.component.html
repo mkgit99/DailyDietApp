@@ -1,1 +1,26 @@
-<p>register works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="registerFormGroup">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input formControlName="userName" matInput />
+            <mat-error *ngIf="fControl['userName'].errors">Fill username!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput />
+            <mat-error *ngIf="fControl['password'].errors">Fill password!</mat-error>
+        </mat-form-field>
+		<mat-form-field appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <input formControlName="password" matInput />
+            <mat-error *ngIf="fControl['password'].errors">Fill password!</mat-error>
+        </mat-form-field>
+        <span>Already have account? <a routerLink="/auth/login">Sign in</a></span>
+    </form>
+    <mat-card-actions [align]="'end'">
+        <button mat-raised-button color="accent">Sign up</button>
+    </mat-card-actions>
+</mat-card>
