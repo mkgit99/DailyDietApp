@@ -1,5 +1,6 @@
-﻿using DailyDietAPI.Data;
+using DailyDietAPI.Data;
 using DailyDietAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DailyDietAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController, Authorize(Roles = "Admin")]
     public class FoodController : ControllerBase
     {
         private readonly DataContext _context;

@@ -174,3 +174,7 @@ C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\obj\Debug\net6.0\refint\DailyDi
 C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\obj\Debug\net6.0\DailyDietAPI.pdb
 C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\obj\Debug\net6.0\DailyDietAPI.genruntimeconfig.cache
 C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\obj\Debug\net6.0\ref\DailyDietAPI.dll
+C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\bin\Debug\net6.0\Scrutor.dll
+C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\ZZMihauek\ZPROJEKTY\DailyDietApp\DailyDietAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

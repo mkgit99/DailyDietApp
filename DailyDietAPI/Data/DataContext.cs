@@ -1,4 +1,4 @@
-﻿using DailyDietAPI.Models;
+using DailyDietAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DailyDietAPI.Data
@@ -8,5 +8,6 @@ namespace DailyDietAPI.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Food> Foods => Set<Food>();
-    }
+		public DbSet<User> Users => Set<User>();
+	}
 }
