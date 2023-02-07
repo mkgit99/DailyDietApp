@@ -10,13 +10,20 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput />
-            <mat-error *ngIf="fControl['password'].errors">Fill password!</mat-error>
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? 'visibility_off' : 'visibility'
+            }}</mat-icon>
+			<mat-error *ngIf="fControl['password'].errors">
+                Min 6 marks
+            </mat-error>
         </mat-form-field>
-		<mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>Confirm password</mat-label>
-            <input formControlName="password" matInput />
-            <mat-error *ngIf="fControl['password'].errors">Fill password!</mat-error>
+            <input formControlName="confirmPassword" matInput [type]="'password'" />
+            <mat-error *ngIf="fControl['confirmPassword'].errors">
+                Passwords do not match
+            </mat-error>
         </mat-form-field>
         <span>Already have account? <a routerLink="/auth/login">Sign in</a></span>
     </form>

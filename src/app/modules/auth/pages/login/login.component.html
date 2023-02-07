@@ -10,7 +10,10 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput />
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? 'visibility_off' : 'visibility'
+            }}</mat-icon>
             <mat-error *ngIf="fControl['password'].errors">Fill password!</mat-error>
         </mat-form-field>
         <span>Don't have account? <a routerLink="/auth/register">Create one</a></span>

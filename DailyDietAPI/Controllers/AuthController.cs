@@ -39,25 +39,23 @@ namespace DailyDietAPI.Controllers
 		{
 			CreatePasswordHash(request.Password, out byte[] psswordHash, out byte[] passwordSalt);
 			User user = new User();
-			//using (_context)
-			//{
-			//	user = _context.Users
-			//		.Where(u => u.Username == request.Username)
-			//		.FirstOrDefault<User>();
-			//}
-			//if (user.Username == request.Username)
-			//{
-			//	return BadRequest("Username already exists.");
-			//}
+
+			var dbUser = _context.Users
+				.FromSql($"SELECT * FROM dbo.Users")
+				.Where(u => u.Username == request.Username)
+				.FirstOrDefault();
+
+			if (dbUser != null)
+				return BadRequest("Username already taken");
+
 			user.Username = request.Username; 
 			user.PasswordHash = psswordHash;
 			user.PasswordSalt = passwordSalt;
 
 			_context.Users.Add(user);
 			await _context.SaveChangesAsync();
-			//return Ok(user);
 
-			return Ok(await _context.Users.ToListAsync());
+			return Ok("Registration done");
 		}
 
 		[HttpPost("login")]
