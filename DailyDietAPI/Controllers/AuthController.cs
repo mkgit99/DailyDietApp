@@ -1,3 +1,4 @@
+using Azure.Core;
 using DailyDietAPI.Data;
 using DailyDietAPI.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -40,10 +41,7 @@ namespace DailyDietAPI.Controllers
 			CreatePasswordHash(request.Password, out byte[] psswordHash, out byte[] passwordSalt);
 			User user = new User();
 
-			var dbUser = _context.Users
-				.FromSql($"SELECT * FROM dbo.Users")
-				.Where(u => u.Username == request.Username)
-				.FirstOrDefault();
+			var dbUser = await _context.Users.FindAsync(request.Username);
 
 			if (dbUser != null)
 				return BadRequest("Username already taken");
@@ -61,10 +59,7 @@ namespace DailyDietAPI.Controllers
 		[HttpPost("login")]
 		public async Task<ActionResult<string>> Login(UserDto request)
 		{
-			var user = _context.Users
-				.FromSql($"SELECT * FROM dbo.Users")
-				.Where(u => u.Username == request.Username)
-				.FirstOrDefault();
+			var user = await _context.Users.FindAsync(request.Username);
 
 			if (user == null || user.Username != request.Username)
 				return BadRequest("User not found");
@@ -82,11 +77,16 @@ namespace DailyDietAPI.Controllers
 		}
 
 		[HttpPost("refresh-token")]
-		public async Task<ActionResult<string>> RefreshToken(User user)
+		public async Task<ActionResult<string>> RefreshToken(string username)
 		{
 			var refreshToken = Request.Cookies["refreshToken"];
 
-			if(!user.RefreshToken.Equals(refreshToken))
+			var user = await _context.Users.FindAsync(username);
+
+			if (user == null || user.Username != username)
+				return BadRequest("User not found");
+
+			if (!user.RefreshToken.Equals(refreshToken))
 			{
 				return Unauthorized("Invalid refresh token.");
 			}
