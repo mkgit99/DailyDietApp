@@ -28,6 +28,6 @@
         <span>Already have account? <a routerLink="/auth/login">Sign in</a></span>
     </form>
     <mat-card-actions [align]="'end'">
-        <button mat-raised-button color="accent">Sign up</button>
+        <button mat-raised-button color="accent" (click)="register(user)">Sign up</button>
     </mat-card-actions>
 </mat-card>

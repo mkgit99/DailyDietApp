@@ -19,6 +19,6 @@
         <span>Don't have account? <a routerLink="/auth/register">Create one</a></span>
     </form>
     <mat-card-actions [align]="'end'">
-        <button mat-raised-button color="accent">Sign in</button>
+        <button mat-raised-button color="accent" (click)="login(user)">Sign in</button>
     </mat-card-actions>
 </mat-card>

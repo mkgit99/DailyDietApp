@@ -11,8 +11,11 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { AuthModule } from './modules/auth/auth.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
     declarations: [AppComponent, HeaderComponent, FooterComponent, AuthLayoutComponent],
@@ -20,6 +23,7 @@ import { AuthModule } from './modules/auth/auth.module';
         BrowserModule,
 
         AuthModule,
+        HttpClientModule,
 
         CoreModule,
         SharedModule,
@@ -28,7 +32,13 @@ import { AuthModule } from './modules/auth/auth.module';
 
         BrowserAnimationsModule,
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

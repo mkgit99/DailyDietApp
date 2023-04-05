@@ -19,8 +19,8 @@ export class AccessGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        const requiresLogin = this.authService.isLoggedIn;
-        if (requiresLogin) {
+
+        if (this.authService.isAuthenticated()) {
             return true;
         }
 

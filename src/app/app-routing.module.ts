@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccessGuard } from './core/guards/access.guard';
-import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { YourDietComponent } from './modules/your-diet/your-diet.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 

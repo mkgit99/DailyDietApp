@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { of, Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { ThemeService } from 'src/app/core/services/theme.service';
 })
 export class HeaderComponent implements OnInit {
     title = 'Daily Diet App';
+    uname = 'Guest';
 
     navItems = [
         { link: '/home', title: 'Home' },
@@ -19,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
     public isDarkTheme$: Observable<boolean> = of(true);
 
-    constructor(private themeService: ThemeService) {}
+    constructor(private themeService: ThemeService, public authService: AuthService, private router: Router) {}
 
     ngOnInit(): void {
         this.isDarkTheme$ = this.themeService.getDarkTheme();
@@ -28,4 +31,16 @@ export class HeaderComponent implements OnInit {
     toggleTheme(checked: boolean) {
         this.themeService.setDarkTheme(checked);
     }
+
+    getLoggedUser() {
+        this.authService.getLoggedUser().subscribe((username: string) => {
+            this.uname = username;
+        });
+    }
+
+    logout() {
+		localStorage.removeItem('authToken');
+		this.authService.isLoggedIn = false;
+		this.router.parseUrl('/home');
+	}
 }

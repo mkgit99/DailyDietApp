@@ -12,7 +12,9 @@
     >
         {{ item.title }}
     </button>
+	<span>Hello, {{ uname }}!</span>
     <button
+		*ngIf="!authService.isAuthenticated()"
         mat-raised-button
         routerLinkActive="active"
         routerLink="/auth/login"
@@ -20,6 +22,17 @@
         style="margin-right: 20px"
     >
         Sign In
+    </button>
+    <button
+        *ngIf="authService.isAuthenticated()"
+        mat-raised-button
+        routerLinkActive="active"
+        routerLink="/auth/login"
+        color="warn"
+        style="margin-right: 20px"
+		(click)="logout()"
+    >
+        Sign Out
     </button>
     <mat-icon class="mr-8">brightness_5</mat-icon>
     <mat-slide-toggle

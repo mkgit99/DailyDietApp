@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from 'src/app/data/models/user';
 
 export default class Validation {
     static match(controlName: string, checkControlName: string): ValidatorFn {
@@ -29,7 +31,9 @@ export default class Validation {
 export class RegisterComponent implements OnInit {
     registerFormGroup!: FormGroup;
     hide = true;
-    constructor(private formBuilder: FormBuilder) {}
+    user = new User();
+
+    constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 
     ngOnInit(): void {
         this.buildForm();
@@ -50,5 +54,21 @@ export class RegisterComponent implements OnInit {
 
     get fControl(): { [key: string]: AbstractControl } {
         return this.registerFormGroup.controls;
+    }
+
+    register(user: User) {
+        if (this.registerFormGroup.valid) {
+            user.username = this.fControl['userName'].value;
+			user.password = this.fControl['password'].value;
+            this.authService.register(user).subscribe({
+                next: () => {
+                    this.registerFormGroup.reset();
+                    alert('Registration successful');
+                },
+                error: () => {
+                    alert('Error while registering');
+                },
+            });
+        }
     }
 }
